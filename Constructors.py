@@ -1,69 +1,97 @@
-from unicodedata import name
+"""1. Write a class with a default constructor, one argument constructor and two argument
+constructors. Instantiate the class to call all the constructors of that class from a main
+class """
+
+class Example:
+    def __init__(self, arg1=None, arg2=None):
+        if arg1 is None and arg2 is None:
+            print("Default constructor called")
+        elif arg2 is None:
+            print(f"One-argument constructor called with value: {arg1}")
+        else:
+            print(f"Two-argument constructor called with values: {arg1}, {arg2}")
+
+    @staticmethod
+    def display():
+        print("Object created successfully")
+
+class Main:
+    def __init__(self):
+        obj1 = Example()
+        obj1.display()
+
+        obj2 = Example(10)
+        obj2.display()
+
+        obj3 = Example(10, 20)
+        obj3.display()
+
+Main()
 
 
-class A:
-    # default constructor
-    def __init__(me):
-     me.name = "Swathi"
-     # a method for printing data members
-    def print_A(me):
-        print(me.name)
-# creating object of the class
-obj = A()
-# calling the instance method using the object obj
-obj.print_A()
+"""----------2. Call the constructors(both default and argument constructors) of super class from a child class-----"""
 
-class B(A):
-    def __init__(me):
-     self.name = "AB"
-    def print_B(me):
-        print(me.name)
-obj1 = B()
-obj1.print_B()
+class SuperClass:
+    def __init__(self, arg1=None):
+        if arg1 is None:
+            print("SuperClass Default Constructor Called")
+        else:
+            print(f"SuperClass Argument Constructor Called with value: {arg1}")
 
-class C:
-    # public data member
-    name = None
+class ChildClass(SuperClass):
+    def __init__(self, arg1=None):
+        if arg1 is None:
+            super().__init__()
+        else:
+            super().__init__(arg1)
+        print("ChildClass Constructor Called")
 
-     # protected data members
-    _roll = None 
+child1 = ChildClass()
+child2 = ChildClass(10)
 
-     # private data member
-    __branch = None
 
-    # constructor
-    def __init__(self,name,roll,branch):
-        self.name = name  
-        self._roll = roll
-        self.__branch = branch  
-    def dsiplayName(self):
-        print("Name:",self.name)
-        # protected member function
-    def _displayRoll(self):
-         # accessing protected data members
-        print("Roll:",self._roll)
+"""--------3. Apply private, public, protected and default access modifiers to the constructor------"""
 
-         # private member function 
-    def __displayBranch(self):
-        # accessing private data members
-        print("Branch:",self.__branch)
+class SuperClass:
+    def __init__(self):
+        self.public_var = "Public constructor"   # Public
+        self._protected_var = "Protected constructor"  # Protected
+        self.__private_var = "Private constructor"  # Private
 
-         # public member function
-    def access__displayBranch(self):     
-          # accessing private member function
-        self.__displayBranch()
+    def display(self):
+        print(f"Public: {self.public_var}")
+        print(f"Protected: {self._protected_var}")
+        print(f"Private: {self.__private_var}")
 
-class D(C):
-    def __init__(self,name, roll, branch):
-        super().__init__(name,roll, branch)
-      # public member function
-    def access_displayRoll(self):            
-         # accessing protected member functions of super class
-        self._displayRoll()
+class ChildClass(SuperClass):
+    def __init__(self):
+        super().__init__()
+        print("ChildClass constructor called")
+        print(f"Accessing Public: {self.public_var}")
+        print(f"Accessing Protected: {self._protected_var}")
+        try:
+            print(f"Accessing Private: {self.__private_var}")
+        except AttributeError:
+            print("Private variable is not accessible directly")
 
-# creating objects of the derived class    
-obj = D("Swathi", 39 , "BCA")
-# calling public member functions of the class  
-obj.dsiplayName()
-obj.access_displayRoll()
-obj.access__displayBranch()      
+# Create an object of the ChildClass
+child = ChildClass()
+child.display()
+
+
+"""---------4. Write a program which illustrates the concept of attributes of a constructor.---------"""
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def display(self):
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+person1.display()
+person2.display()
