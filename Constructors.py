@@ -3,21 +3,21 @@ from unicodedata import name
 
 class A:
     # default constructor
-    def __init__(self):
-     self.name = "Kashish"
+    def __init__(me):
+     me.name = "Swathi"
      # a method for printing data members
-    def print_A(self):
-        print(self.name)
+    def print_A(me):
+        print(me.name)
 # creating object of the class
 obj = A()
 # calling the instance method using the object obj
 obj.print_A()
 
 class B(A):
-    def __init__(self):
-     self.name = "KG"
-    def print_B(self):
-        print(self.name)
+    def __init__(me):
+     self.name = "AB"
+    def print_B(me):
+        print(me.name)
 obj1 = B()
 obj1.print_B()
 
@@ -62,7 +62,7 @@ class D(C):
         self._displayRoll()
 
 # creating objects of the derived class    
-obj = D("Kashish", 5 , "CSE")
+obj = D("Swathi", 39 , "BCA")
 # calling public member functions of the class  
 obj.dsiplayName()
 obj.access_displayRoll()
