@@ -1,19 +1,60 @@
-#Define a static variable and access that through a class.
+"""----------STATIC-----------"""
+"""----------1. Define a static variable and access that through a class  ---"""
 
-class Python:
-# Access through class    
- staticVariable = 9 
-print(Python.staticVariable)
+class MyClass:
+    static_var = "I am a static variable"
 
-#Change within an class
-Python.staticVariable = 12
-print(Python.staticVariable) # Gives 12
+    @classmethod
+    def access_static(cls):
+        return cls.static_var
 
-#Access through an instance
-instance = Python()
-print(instance.staticVariable) # Gives 12
+print(MyClass.static_var)
+print(MyClass.access_static())
 
-#Change within an instance
-instance.staticVariable = 15
-print(instance.staticVariable) # Gives 15
-print(Python.staticVariable) #Gives 12
+obj = MyClass()
+print(obj.static_var)
+
+"""-------------2. Define a static variable and access that through a instance ---------"""
+
+class MyClass:
+    static_var = "I am a static variable"
+
+    def access_static(self):
+        return self.static_var
+
+obj = MyClass()
+print(obj.static_var)
+print(obj.access_static())
+
+
+"""---------3. Define a static variable and change within the instance --------"""
+
+class MyClass:
+    static_var = "I am a static variable"
+
+    def change_static(self, new_value):
+        self.static_var = new_value
+
+obj = MyClass()
+obj.change_static("Changed inside instance")
+
+print(obj.static_var)
+print(MyClass.static_var)
+
+
+"""-------4. Define a static variable and change within the class -----------"""
+
+class MyClass:
+    static_var = "I am a static variable"
+
+    @classmethod
+    def change_static(cls, new_value):
+        cls.static_var = new_value
+
+MyClass.change_static("Changed inside class")
+
+print(MyClass.static_var)
+
+obj = MyClass()
+print(obj.static_var)
+
