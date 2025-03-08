@@ -1,68 +1,88 @@
-# super class
-class Super:
-     
-     # public data member
-     var1 = None
- 
-     # protected data member
-     _var2 = None
-      
-     # private data member
-     __var3 = None
-     
-     # constructor
-     def __init__(self, var1, var2, var3): 
-          self.var1 = var1
-          self._var2 = var2
-          self.__var3 = var3
-     
-    # public member function  
-     def displayPublicMembers(self):
-  
-          # accessing public data members
-          print("Public Data Member: ", self.var1)
-        
-     # protected member function  
-     def _displayProtectedMembers(self):
-  
-          # accessing protected data members
-          print("Protected Data Member: ", self._var2)
-      
-     # private member function  
-     def __displayPrivateMembers(self):
-  
-          # accessing private data members
-          print("Private Data Member: ", self.__var3)
- 
-     # public member function
-     def accessPrivateMembers(self):    
-           
-          # accessing private member function
-          self.__displayPrivateMembers()
-  
-# derived class
-class Sub(Super):
-  
-      # constructor
-       def __init__(self, var1, var2, var3):
-                Super.__init__(self, var1, var2, var3)
-           
-      # public member function
-       def accessProtectedMembers(self):
-                 
-                # accessing protected member functions of super class
-                self._displayProtectedMembers()
-  
-# creating objects of the derived class    
-obj = Sub("KG", 5 , "KG !")
- 
-# calling public member functions of the class
-obj.displayPublicMembers()
-obj.accessProtectedMembers()
-obj.accessPrivateMembers()
- 
-# Object can access protected member
-print("Object is accessing protected member:", obj._var2)
- 
-# object can not access private member, so it will generate Attribute error
-#print(obj.__var3)
+"""-----------8.Access Modifiers--------"""
+"""----------1. Create a class with PRIVATE fields, private method and a main method. Print the fields 
+in main method. Call the private method in main method. 
+Create a sub class and try to access the private fields and methods from sub class. ---------"""
+
+class Parent:
+    def __init__(self):
+        self.__private_field = "This is a private field"
+
+    @staticmethod
+    def __private_method():
+        return "This is a private method"
+
+    def get_private_field(self):
+        return self.__private_field
+
+    @staticmethod
+    def call_private_method():
+        return Parent.__private_method()
+
+
+class Child(Parent):
+    def access_private_field(self):
+        return getattr(self, "_Parent__private_field", "Cannot access private field from subclass")
+
+    @staticmethod
+    def access_private_method():
+        return "Cannot access private method from subclass"
+
+
+def main():
+    parent_obj = Parent()
+    print(parent_obj.get_private_field())
+    print(Parent.call_private_method())
+
+    child_obj = Child()
+    print(child_obj.access_private_field())
+    print(Child.access_private_method())
+
+
+main()
+
+"""---------2. Create a class with PROTECTED fields and methods. Access these fields and methods 
+from any other class in the same package.  
+Also, Access the PROTECTED fields and methods from child class located in a different 
+package 
+Access the PROTECTED fields and methods from any class in different package ----"""
+
+
+class Parent:
+    def __init__(self):
+        self._protected_field = "This is a protected field"
+
+    def _protected_method(self):
+        return "This is a protected method"
+
+    def access_protected(self):
+        return f"Field: {self._protected_field}, Method: {self._protected_method()}"
+
+
+class SameModuleClass:
+    def access_protected(self):
+        parent = Parent()
+        return f"Accessing Protected: {parent._protected_field}, {parent._protected_method()}"
+
+
+class Child(Parent):
+    def access_protected(self):
+        return f"Accessing Protected from Child: {self._protected_field}, {self._protected_method()}"
+
+
+class External:
+    def access_protected(self):
+        parent = Parent()
+        try:
+            return f"External Access: {parent._protected_field}, {parent._protected_method()}"
+        except AttributeError:
+            return "Cannot access protected members from an external class"
+
+
+def main():
+    print(SameModuleClass().access_protected())
+    print(Child().access_protected())
+    print(External().access_protected())
+
+
+main()
+
