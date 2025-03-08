@@ -1,85 +1,105 @@
-# Different ways creating a string.
+"""-----------STRINGS--------"""
 
-string = 'Hello'
-print(string)
+"""-----------1. Different ways creating a string -----------"""
+str1 = 'Hello'
+str2 = "Hello"
+str3 = '''Hello'''
+str4 = """Hello"""
+str5 = str(123)
+str6 = ''.join(['H', 'e', 'l', 'l', 'o'])
+str7 = "{}".format("Hello")
+str8 = f"{'Hello'}"
+str9 = bytes("Hello", "utf-8").decode("utf-8")
 
-string = "Hello"
-print(string)
+print(str1, str2, str3, str4, str5, str6, str7, str8, str9)
 
-string1 = '''World'''
-print(string1)
+"""----------2. Concatenating two strings using + operator ----------"""
 
-string2 = """Welcome to the world of Python""" # triple quotes string can extend multiple lines
-print(string2)
-print()
+str1 = "Hello"
+str2 = "World"
+result = str1 + " " + str2
+print(result)
 
-# Concatenating two strings using + operator
-str1 = string + string1
-print("Concatenated two different strings:",str1)
-print()
+"""----------3. Finding the length of the string -------"""
 
-# Finding the length of the string.
-print("length of the string:",len(str1))
-print()
+str1 = "Hello, World!"
+length = len(str1)
+print(length)
 
-# Extract a string using Substring.
+"""-------4. Extract a string using Substring --------"""
 
-# Searching in strings using index()
-str3 = 'kashish'
-str1 = 'ish'
-str2 = 'h'
-print("Position of ish:",str3.index(str1))
-print("Position of h:",str3.index(str2))
-print()
+str1 = "Hello, World!"
+substring = str1[7:12]
+print(substring)
 
-# Matching a String Against a Regular Expression With matches().
-from ast import Str
+"""-----5. Searching in strings using index() -------"""
+
+str1 = "Hello, World!"
+index = str1.index("World")
+print(index)
+
+"""-----------6. Matching a String Against a Regular Expression With matches() --------"""
+
 import re
-Substr = 'Madara'
-str6 = 'Madara once said- Wake up to relity nothing goes as planned in this cursed world'
-print(re.match(Substr,str6))
-print()
 
-# Comparing strings.
-str8 = 'Itachi uchiha'
-str1 = 'Madara uchiha'
-str2 = str8
-print(str8 == str1)
-print(str8 == str2)
+pattern = r"\d{3}-\d{2}-\d{4}"
+string = "My SSN is 123-45-6789"
+match = re.match(pattern, string)
+
+print(match is not None)
+
+
+"""--------7. Comparing strings  ---------"""
+
+str1 = "apple"
+str2 = "banana"
+
 print(str1 == str2)
-print(str8 != str1)
-print()
+print(str1 != str2)
+print(str1 < str2)
+print(str1 > str2)
 
-# startsWith(), endsWith().
-string = 'Minato Namikaze'
-print(string.startswith("Minato"))
-print(string.endswith("kaze"))
-print()
 
-# Trimming strings with strip().
-str7 = 'Hello World hi'
-print(str7.strip("hi"))
-print()
+"""----------8. startsWith(), endsWith() and compareTo() ----------"""
 
-# Replacing characters in strings with replace()
-string = 'Hi World'
-print(string.replace("Hi","Hello"))
-print()
+str1 = "Hello, World!"
 
-# Splitting strings with split()
-str9 = 'hi-hello-bye'
-print(str9.split("-"))
-print()
+print(str1.startswith("Hello"))
+print(str1.endswith("World!"))
+print((str1 > "Apple") - (str1 < "Apple"))
 
-# Converting integer objects to Strings.
-numb = 10
-numb1 = str(numb)
-print(numb1)
-print(type(numb1))
 
-print()
-# Converting to uppercase and lowercase.
-string = 'hello'
-string1 = 'WORLD'
-print(string.upper())
-print(string1.lower())
+"""---------9. Trimming strings with strip() -------"""
+
+str1 = "   Hello, World!   "
+trimmed_str = str1.strip()
+print(trimmed_str)
+
+"""--------10. Replacing characters in strings with replace() --------"""
+
+str1 = "Hello, World!"
+new_str = str1.replace("World", "Python")
+print(new_str)
+
+"""---------11. Splitting strings with split() ----------"""
+
+str1 = "apple,banana,cherry"
+split_str = str1.split(",")
+print(split_str)
+
+
+"""----------12. Converting integer objects to Strings --------"""
+
+num = 123
+str_num = str(num)
+print(str_num)
+
+
+"""----------13. Converting to uppercase and lowercase --------"""
+
+str1 = "Hello, World!"
+uppercase_str = str1.upper()
+lowercase_str = str1.lower()
+
+print(uppercase_str)
+print(lowercase_str)
