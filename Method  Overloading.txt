@@ -1,85 +1,60 @@
-# Different ways creating a string.
+"""--------1. Write two methods with the same name but different number of parameters of same type and call the methods -------------"""
 
-string = 'Hello'
-print(string)
+class Example:
+    @staticmethod
+    def display(*args):
+        if len(args) == 1:
+            print(f"Method with one parameter: {args[0]}")
+        elif len(args) == 2:
+            print(f"Method with two parameters: {args[0]}, {args[1]}")
+        else:
+            print("Invalid number of arguments")
 
-string = "Hello"
-print(string)
+Example.display(10)
+Example.display(10, 20)
+Example.display(10, 20, 30)
 
-string1 = '''World'''
-print(string1)
 
-string2 = """Welcome to the world of Python""" # triple quotes string can extend multiple lines
-print(string2)
-print()
+"""-----------2. Write two methods with the same name but different number of parameters of different 
+data type and call the methods  ---------"""
 
-# Concatenating two strings using + operator
-str1 = string + string1
-print("Concatenated two different strings:",str1)
-print()
+class Example:
+    @staticmethod
+    def display(*args):
+        if len(args) == 1:
+            if isinstance(args[0], int):
+                print(f"Method with one integer parameter: {args[0]}")
+            elif isinstance(args[0], str):
+                print(f"Method with one string parameter: {args[0]}")
+            else:
+                print("Invalid argument type")
+        elif len(args) == 2:
+            if isinstance(args[0], int) and isinstance(args[1], str):
+                print(f"Method with an integer and a string parameter: {args[0]}, {args[1]}")
+            else:
+                print("Invalid argument types")
+        else:
+            print("Invalid number of arguments")
 
-# Finding the length of the string.
-print("length of the string:",len(str1))
-print()
+Example.display(10)
+Example.display("Hello")
+Example.display(10, "World")
 
-# Extract a string using Substring.
 
-# Searching in strings using index()
-str3 = 'kashish'
-str1 = 'ish'
-str2 = 'h'
-print("Position of ish:",str3.index(str1))
-print("Position of h:",str3.index(str2))
-print()
+"""---------3. Write two methods with the same name and same number of parameters of same type ---------"""
 
-# Matching a String Against a Regular Expression With matches().
-from ast import Str
-import re
-Substr = 'Madara'
-str6 = 'Madara once said- Wake up to relity nothing goes as planned in this cursed world'
-print(re.match(Substr,str6))
-print()
+class Example:
+    @staticmethod
+    def display(arg1):
+        if isinstance(arg1, int):
+            print(f"Method with integer parameter: {arg1}")
+        elif isinstance(arg1, str):
+            print(f"Method with string parameter: {arg1}")
+        elif isinstance(arg1, bool):
+            print(f"Method with boolean parameter: {arg1}")
+        else:
+            print("Invalid argument type")
 
-# Comparing strings.
-str8 = 'Itachi uchiha'
-str1 = 'Madara uchiha'
-str2 = str8
-print(str8 == str1)
-print(str8 == str2)
-print(str1 == str2)
-print(str8 != str1)
-print()
-
-# startsWith(), endsWith().
-string = 'Minato Namikaze'
-print(string.startswith("Minato"))
-print(string.endswith("kaze"))
-print()
-
-# Trimming strings with strip().
-str7 = 'Hello World hi'
-print(str7.strip("hi"))
-print()
-
-# Replacing characters in strings with replace()
-string = 'Hi World'
-print(string.replace("Hi","Hello"))
-print()
-
-# Splitting strings with split()
-str9 = 'hi-hello-bye'
-print(str9.split("-"))
-print()
-
-# Converting integer objects to Strings.
-numb = 10
-numb1 = str(numb)
-print(numb1)
-print(type(numb1))
-
-print()
-# Converting to uppercase and lowercase.
-string = 'hello'
-string1 = 'WORLD'
-print(string.upper())
-print(string1.lower())
+Example.display(10)
+Example.display("Hello")   
+Example.display(True)
