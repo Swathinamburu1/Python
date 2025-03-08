@@ -1,24 +1,38 @@
-#Creating dictionary
-Dict = dict([(1,'Kashish'), (2,'Kritika'), (3,'Aastha'), (4,'Vaishali'), (5,'Muskan')])
-print("Dictionary with each item as a pair:",Dict) #printing dictionary
+"""----------------DICTIONARY-------"""
 
-#adding element in dictionary
-Dict[6] = 'Nitya'
-print("\n Dictionary with new item added:",Dict)
+"""---------1. Create a Dictionary with at least 5 key value pairs of the Student ID and Name 
+1.1. Adding the values in dictionary 
+1.2. Updating the values in dictionary 
+1.3. Accessing the value in dictionary 
+1.4. Create a nested loop dictionary 
+1.5. Access the values of nested loop diction------"""
 
-#updating values in dictionary
-Dict[3] = 'Navdisha'
-print("\n Dictionary with updated values:",Dict)
+students = dict([(101, "Alice"), (102, "Bob"), (103, "Charlie"), (104, "David"), (105, "Emma")])
 
-print("\n Accessing one value in Dictionary:",Dict[1])
+students[106] = "Frank"
+students[107] = "Grace"
 
-#deleting value from drictionary
-del Dict[6]
-print("\n Delete a value from a Dictionary:",Dict)
+print("Dictionary after adding values:", students)
 
-#creating a nested dictionary
-Dict1 = {1: 'Kashish', 2: 'Kritika',
-        3:{'Age' : 18, 'Branch' : 'CSE', 'Year' : 'Third Year'}}
-print("\n Nested loop Dictionary:",Dict1)
+students[102] = "Brian"
+print("Dictionary after updating Bob to Brian:", students)
 
-print("\n Accessing an element of a Nested Dictionary:",Dict1[2])
+print("Accessing Student ID 103:", students[103])
+
+nested_students = dict(
+    [
+        (201, {"name": "John", "age": 20, "grade": "A"}),
+        (202, {"name": "Lisa", "age": 21, "grade": "B"}),
+        (203, {"name": "Mark", "age": 22, "grade": "A+"}),
+    ]
+)
+
+print("Nested Dictionary:",  nested_students)
+
+print("Accessing John's details:", nested_students[201])
+print("Accessing John's grade:", nested_students[201]["grade"])
+
+
+
+
+
